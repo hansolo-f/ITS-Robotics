@@ -32,11 +32,13 @@ float speed_dgn_loss(float x)
 
 int main() {
 	float input;
-	float loss = speed_dgn_loss(input);
-	float V0 = mencari_V0(input, loss);
+	float loss;
+	float V0;
 	int jarak;
 
   	std::cin >> input;
+	loss = speed_dgn_loss(input);
+	V0 = mencari_V0(input, loss);
 
 	jarak = V0*V0 * sin(2*SUDUT*3.14/180) * GRAVITASI;
 	double tangensial = sqrt(jarak * GRAVITASI / sin(2 * SUDUT * 3.14 / 180)) + loss;
