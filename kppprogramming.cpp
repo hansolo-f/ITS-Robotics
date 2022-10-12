@@ -20,28 +20,27 @@ float speed_dgn_loss(float x)
 	float loss;
 	if (x >= 2 && x <= 11) {
 		loss = 1;
-	}
-	else if (x >= 14 && x <= 23) {
+	} else if (x >= 14 && x <= 23) {
 		loss = 3;
-	}
-	else if (x >= 26 && x <= 30) {
+	} else if (x >= 26 && x <= 30) {
 		loss = 5;
+	}
+	else {
+		loss = 0;
 	}
     return loss;
 }
 
 int main() {
-	float input;
-	float loss;
-	float V0;
+	float input, loss, V0;
 	int jarak;
 
   	std::cin >> input;
 	loss = speed_dgn_loss(input);
 	V0 = mencari_V0(input, loss);
 
-	jarak = V0*V0 * sin(2*SUDUT*3.14/180) * GRAVITASI;
-	double tangensial = sqrt(jarak * GRAVITASI / sin(2 * SUDUT * 3.14 / 180)) + loss;
+	jarak = V0*V0 * sin(2*SUDUT*3.14/180) / GRAVITASI;
+	double tangensial = sqrt(jarak*GRAVITASI / sin(2*SUDUT*3.14/180)) + loss;
 
   	std::cout << jarak << " " << tangensial << std::endl;
     return 0;
